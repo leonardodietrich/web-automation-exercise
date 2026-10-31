@@ -1,0 +1,10 @@
+export { default as HomePage } from './HomePage';
+export { default as LoginPage } from './LoginPage';
+export { default as SignupPage } from './SignupPage';
+export { default as ProductsPage } from './ProductsPage';
+export { default as ProductDetailPage } from './ProductDetailPage';
+export { default as CartPage } from './CartPage';
+export { default as CheckoutPage } from './CheckoutPage';
+export { default as PaymentPage } from './PaymentPage';
+export { default as Header } from './components/Header';
+export { default as Footer } from './components/Footer';

@@ -1,0 +1,29 @@
+{
+  "name": "automationexercise-pgats",
+  "version": "1.0.0",
+  "description": "Automação de testes E2E do Automation Exercise com Cypress, Page Objects e cypress-mochawesome-reporter",
+  "private": true,
+  "scripts": {
+    "clean:reports": "node -e \"require('fs').rmSync('cypress/reports',{recursive:true,force:true})\"",
+    "cy:open": "cypress open",
+    "cy:run": "npm run clean:reports && cypress run",
+    "cy:run:chrome": "npm run clean:reports && cypress run --browser chrome",
+    "cy:run:firefox": "npm run clean:reports && cypress run --browser firefox",
+    "test": "npm run cy:run"
+  },
+  "keywords": [
+    "cypress",
+    "e2e",
+    "page-objects",
+    "mochawesome"
+  ],
+  "license": "ISC",
+  "engines": {
+    "node": ">=20"
+  },
+  "type": "commonjs",
+  "devDependencies": {
+    "cypress": "^16.2.1",
+    "cypress-mochawesome-reporter": "^5.0.0"
+  }
+}
