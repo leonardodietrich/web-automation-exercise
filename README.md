@@ -38,26 +38,50 @@ Para apontar para outro ambiente: `CYPRESS_BASE_URL=https://outro-ambiente npm r
 
 ```text
 .
-├── .github/workflows/cypress.yml   # Pipeline de CI
+├── .gitignore                      # Arquivos ignorados pelo Git
+├── .github/
+│   └── workflows/
+│       └── cypress.yml             # Pipeline de CI
 ├── cypress.config.js               # Configuração do Cypress e do reporter
+├── package.json                    # Scripts e dependências do projeto
+├── package-lock.json               # Versões travadas das dependências
+├── README.md                       # Documentação do projeto
 └── cypress/
-    ├── e2e/                        # Specs organizadas por funcionalidade
-    │   ├── auth/                   # login.cy.js, register.cy.js
-    │   ├── home/                   # home.cy.js
-    │   └── products/               # products.cy.js
-    ├── fixtures/                   # Massa de dados estática
-    ├── reports/                    # Relatório gerado (ignorado pelo git)
+    ├── e2e/                        # Specs E2E identificadas por caso de teste
+    │   ├── CT01.cy.js
+    │   ├── CT02.cy.js
+    │   ├── CT03.cy.js
+    │   ├── CT04.cy.js
+    │   ├── CT05.cy.js
+    │   ├── CT08.cy.js
+    │   ├── CT09.cy.js
+    │   ├── CT10.cy.js
+    │   ├── CT15.cy.js
+    │   └── CT16.cy.js
+    ├── fixtures/
+    │   └── users.json              # Massa de dados estática
+    ├── reports/                    # Relatórios gerados pelo reporter
+    │   └── index.html
+    ├── screenshots/                # Capturas geradas em falhas
     └── support/
-        ├── api/                    # Chamadas de API para preparar/limpar dados
+        ├── api/
+        │   └── userApi.js          # Chamadas de API para usuários
         ├── pages/                  # Page Objects
-        │   ├── components/         # Componentes reutilizáveis (ex.: Header)
+        │   ├── components/         # Componentes reutilizáveis
+        │   │   ├── Footer.js
+        │   │   └── Header.js
         │   ├── BasePage.js
+        │   ├── CartPage.js
+        │   ├── CheckoutPage.js
         │   ├── HomePage.js
         │   ├── LoginPage.js
-        │   ├── SignupPage.js
+        │   ├── PaymentPage.js
+        │   ├── ProductDetailPage.js
         │   ├── ProductsPage.js
+        │   ├── SignupPage.js
         │   └── index.js            # Ponto único de importação
-        ├── utils/                  # Geração de dados dinâmicos
+        ├── utils/
+        │   └── dataFactory.js      # Geração de dados dinâmicos
         ├── commands.js             # Comandos customizados
         └── e2e.js                  # Hooks globais e registro do reporter
 ```
@@ -72,7 +96,7 @@ Para apontar para outro ambiente: `CYPRESS_BASE_URL=https://outro-ambiente npm r
 
 ## Relatórios
 
-Ao final do `cy:run`, o relatório HTML é gerado em `cypress/reports/html/index.html`, com gráficos e screenshots das falhas embutidos.
+Ao final do `cy:run`, o relatório HTML é gerado em `cypress/reports/index.html`, com gráficos e screenshots das falhas embutidos.
 
 ## CI/CD (GitHub Actions)
 
@@ -87,4 +111,4 @@ Etapas: checkout, setup do Node (com cache do npm), `npm ci`, execução dos tes
 ## Adicionando novos testes
 
 1. Crie ou reutilize um Page Object em `cypress/support/pages` e exporte-o em `index.js`.
-2. Crie a spec em `cypress/e2e/<funcionalidade>/<nome>.cy.js`.
+2. Crie a spec em `cypress/e2e/<nome>.cy.js`.
